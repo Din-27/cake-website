@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
-
 import { BsPlus, BsEyeFill } from "react-icons/bs";
-
 import { CartContext } from "../contexts/CartContext";
 import Link from "next/link";
+// import Image from "next/image";
+
 
 const Product = ({ product }) => {
   const { addToCart }: any = useContext(CartContext);
 
   // destructure product
   const { id, image, category, title, price } = product;
+  console.log(image);
+
   return (
     <div>
       <div className="border border-[#e4e4e4] h-[300px] mb-4 relative overflow-hidden group transition">
@@ -19,6 +21,8 @@ const Product = ({ product }) => {
             <img
               className="max-h-[300px] group-hover:scale-110 transition duration-300"
               src={image}
+              // width={300}
+              // height={300}
               alt=""
             />
           </div>
