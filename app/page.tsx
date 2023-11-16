@@ -1,3 +1,6 @@
-export default function Page() {
-  return <h1>Hello, Next.js!</h1>
+import Home from "../src/pages/Home";
+
+export default function page() {
+
+  return <Home />
 }
