@@ -1,15 +1,17 @@
+'use client'
 import React, { useContext, useEffect, useState } from "react";
 import { SidebarContext } from "../contexts/SidebarContext";
 import { CartContext } from "../contexts/CartContext";
-import Logo from "../img/logo.svg";
 import { BsBag } from "react-icons/bs";
 import Link from "next/link";
+import Logo from "./Logo";
 
 const Header = () => {
   // header state
   const [isActive, setIsActive] = useState(false);
   const { isOpen, setIsOpen }: any = useContext(SidebarContext);
   const { itemAmount }: any = useContext(CartContext);
+  console.log(isOpen);
 
   // event listener
   useEffect(() => {
@@ -25,8 +27,8 @@ const Header = () => {
     >
       <div className="container mx-auto flex items-center justify-between h-full">
         <Link href={"/"}>
-          <div className="w-[40px]">
-            <img src={Logo} alt="" />
+          <div>
+            <Logo />
           </div>
         </Link>
 
