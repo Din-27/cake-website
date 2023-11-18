@@ -16,7 +16,7 @@ export const KeenSlider = (update) => {
                 slides: { perView: 4, spacing: 10 },
             },
         },
-        slides: { perView: update },
+        slides: { perView: update, spacing: 0 },
     })
     return ref
 }

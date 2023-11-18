@@ -28,17 +28,26 @@ const Home = () => {
   });
   console.log(tooltips);
 
-
+  const HanldeMouse = (boolean) => {
+    setTimeout(() => {
+      setTooltips(boolean)
+    }, 2000)
+  }
 
   return (
     <div onClick={handleClose} style={isOpen ? { 'overflow': 'hidden' } : {}}>
       <Hero />
       <section className="py-20">
         <div className="container mx-auto">
-          <div className="mb-10">
-            <h1 className="text-3xl font-semibold mb-2 text-center">Referensi Kue</h1>
+          <div className="mb-10 text-center">
+            <h1 className="text-3xl font-semibold mb-2">Referensi Kue</h1>
             <div className="tex-sm capitalize text-gray-500">Berikut Referensi untuk kamu yg sedang nyari seni dalam kue. Jika Sudah dapat,Jangan Lupa Hubungi kami. Kami Akan Buatkan kue dengan seni untuk Anda</div>
           </div>
+          {tooltips &&
+            <div className="absolute top-[930px] flex text-lg bg-gray-50 p-2 rounded bg-opacity-2">
+              Geser Ke kiri atau ke kanan untuk <br />mendapatkan referensi lebih banyak
+            </div>
+          }
           {products &&
             <div ref={ref} className="lg:hidden keen-slider">
               {filteredProducts.map((product, index) => {
