@@ -1,3 +1,4 @@
+import Footer from "../src/components/Footer"
 import Header from "../src/components/Header"
 import Sidebar from "../src/components/Sidebar"
 import CartProvider from "../src/contexts/CartContext"
@@ -21,6 +22,7 @@ export default function RootLayout({
               <Header />
               {children}
               <Sidebar />
+              <Footer />
             </ProductProvider>
           </CartProvider>
         </SidebarProvider>

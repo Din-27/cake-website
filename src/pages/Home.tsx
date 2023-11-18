@@ -1,11 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 import { SidebarContext } from "../contexts/SidebarContext";
 import Hero from "../components/Hero";
-import Product from "../components/Product";
+import { KeenSlider } from "../helpers/KeenSlider";
+import Card from "../components/Card";
 
 const Home = () => {
   // get products from product context
+  const [update, setUpdate] = useState(0);
+
+  useEffect(() => {
+    setUpdate(1);
+  }, [])
+
+  const ref = KeenSlider(update)
+  const [tooltips, setTooltips] = useState(false)
   const { isOpen, handleClose }: any = useContext(SidebarContext);
   const { products }: any = useContext(ProductContext);
 
@@ -17,23 +26,33 @@ const Home = () => {
       item.category === "men's clothing" || item.category === "women's clothing" || item.category === "jewelery"
     );
   });
+  console.log(tooltips);
+
+
 
   return (
     <div onClick={handleClose} style={isOpen ? { 'overflow': 'hidden' } : {}}>
       <Hero />
       <section className="py-20">
         <div className="container mx-auto">
-          <h1 className="text-3xl font-semibold mb-10 text-center">Explore Our Products</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 lg:mx-8 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0">
-            {filteredProducts.map((product) => {
-              return (
-                <Product product={product} key={product.id} />
-              );
-            })}
+          <div className="mb-10">
+            <h1 className="text-3xl font-semibold mb-2 text-center">Referensi Kue</h1>
+            <div className="tex-sm capitalize text-gray-500">Berikut Referensi untuk kamu yg sedang nyari seni dalam kue. Jika Sudah dapat,Jangan Lupa Hubungi kami. Kami Akan Buatkan kue dengan seni untuk Anda</div>
           </div>
+          {products &&
+            <div ref={ref} className="lg:hidden keen-slider">
+              {filteredProducts.map((product, index) => {
+                return (
+                  <div onMouseEnter={() => setTooltips(true)} onMouseLeave={() => setTooltips(false)} className={`keen-slider__slide number-slide${index}`}>
+                    <Card product={product} key={product.id} />
+                  </div>
+                );
+              })}
+            </div>
+          }
         </div>
-      </section>
-    </div>
+      </section >
+    </div >
   );
 };
 
