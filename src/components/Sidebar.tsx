@@ -17,7 +17,7 @@ const Sidebar = () => {
   return (
     <div
       className={`${isOpen ? "right-0" : "-right-full"
-        } "w-full grid grid-rows-7 bg-white fixed h-screen top-0 h-full shadow-2xl w-1/2 transition-all duration-300 z-20 px-4 lg:px-[35px] "`}
+        } "w-full sidebarrel grid grid-rows-7 bg-white fixed h-screen overflow-y-hidden top-0 h-full shadow-2xl lg:w-1/3 md:w-1/2 w-full transition-all duration-300 z-20 px-4 lg:px-[35px] "`}
     >
       <div className="flex items-center justify-between border-b mb-auto py-2">
         <div className="uppercase text-sm font-semibold">Shopping Bag ({itemAmount})</div>
