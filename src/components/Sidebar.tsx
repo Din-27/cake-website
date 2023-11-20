@@ -17,9 +17,9 @@ const Sidebar = () => {
   return (
     <div
       className={`${isOpen ? "right-0" : "-right-full"
-        } "w-full grid grid-rows-7 bg-white fixed top-0 h-screen shadow-2xl md:w-[55vw] lg:w-[40vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px] "`}
+        } "w-full grid grid-rows-7 bg-white fixed h-screen top-0 h-full shadow-2xl w-1/2 transition-all duration-300 z-20 px-4 lg:px-[35px] "`}
     >
-      <div className="flex items-center justify-between py-6 border-b">
+      <div className="flex items-center justify-between border-b mb-auto py-2">
         <div className="uppercase text-sm font-semibold">Shopping Bag ({itemAmount})</div>
         <div
           onClick={handleClose}
@@ -28,12 +28,12 @@ const Sidebar = () => {
           <IoMdArrowForward className="text-2xl" />
         </div>
       </div>
-      <div className="row-span-6 flex flex-col gap-y-2 overflow-y-auto overflow-x-hidden border-b">
+      <div className="row-span-4 overflow-y-auto overflow-x-hidden border-b">
         {cart.map((item: any) => {
           return <CartItem item={item} key={item.id} />;
         })}
       </div>
-      <div className="flex flex-col my-auto gap-y-3">
+      <div className="flex flex-col mt-auto mb-4">
         <div className="flex w-full justify-between items-center">
           {/* total */}
           <div className="font-semibold">
